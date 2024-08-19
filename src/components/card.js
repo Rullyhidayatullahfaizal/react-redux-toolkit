@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const CardPage = ({ image, title, description, id }) => {
+const CardPage = ({ image, title, description, id,prices }) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link key={id} href={`/product/csr/${id}`}>
@@ -14,6 +14,7 @@ const CardPage = ({ image, title, description, id }) => {
             {title}
           </h5>
         </a>
+        <h6 className="font-bold"> USD.{prices}</h6>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {description}
         </p>

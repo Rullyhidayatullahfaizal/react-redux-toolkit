@@ -1,7 +1,5 @@
 import CardPage from "@/components/card";
 import MetaHead from "@/components/MetaHead";
-import Link from "next/link";
-
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -13,7 +11,6 @@ const ProductsPage = () => {
       `${process.env.NEXT_PUBLIC_HOST_API}/products`
     );
     const data = await response.json();
-    // console.log(data);
     setProducts(data);
   };
 
@@ -21,8 +18,8 @@ const ProductsPage = () => {
     fetchProduct();
   }, []);
 
-  const datafromRedux = useSelector((state) => state.cart.total);
-  // console.log("from redux", datafromRedux);
+  const datafromRedux = useSelector((state) => state.cart.value);
+  console.log("from redux", datafromRedux);
 
   return (
     <>
@@ -34,19 +31,19 @@ const ProductsPage = () => {
       />
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
         {products.length > 0
-          ? products?.map((value) => (
-              <>
-                <CardPage
-                  description={value.description}
-                  title={value.title}
-                  image={value.image}
-                  id={value.id}
-                />
-              </>
+          ? products.map((value) => (
+              <CardPage
+                key={value.id} // Add key prop here
+                description={value.description}
+                title={value.title}
+                image={value.image}
+                id={value.id}
+                prices={value.price}
+              />
             ))
           : [0, 1, 2, 3, 4].map((index) => (
               <div
-                key={index}
+                key={index} // Add key prop here
                 role="status"
                 className="mb-5 p-3 border border-gray-200 rounded-lg shadow space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center"
               >
@@ -76,6 +73,7 @@ const ProductsPage = () => {
     </>
   );
 };
+
 export default ProductsPage;
 
 export async function getServerSideProps({ req, res }) {

@@ -1,7 +1,11 @@
 import MetaHead from "@/components/MetaHead";
 import React from "react";
 
-const DetailProduct = ({ image, title, description, price, availability }) => {
+
+const DetailProduct = ({ image, title, description, price, availability,onClickCart }) => {
+
+  
+
   return (
     <>
     <MetaHead
@@ -28,9 +32,9 @@ const DetailProduct = ({ image, title, description, price, availability }) => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M12 4v16m8-8H4"
                 />
               </svg>
@@ -58,9 +62,9 @@ const DetailProduct = ({ image, title, description, price, availability }) => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M20 12H4"
                 />
               </svg>
@@ -77,16 +81,18 @@ const DetailProduct = ({ image, title, description, price, availability }) => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M12 4v16m8-8H4"
                 />
               </svg>
             </button>
           </div>
 
-          <button className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center">
+          <button
+          onClick={onClickCart}
+          className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center">
             Add to order
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,9 +102,9 @@ const DetailProduct = ({ image, title, description, price, availability }) => {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
@@ -107,7 +113,7 @@ const DetailProduct = ({ image, title, description, price, availability }) => {
           <div className="flex justify-between w-full mt-4">
             <div className="flex items-center text-gray-500">
               <input id="input1" type="checkbox" className="mr-2" />
-              <label for="input1" className="select-none cursor-pointer">
+              <label htmlFor="input1" className="select-none cursor-pointer">
                 Compare
               </label>
             </div>
@@ -122,9 +128,9 @@ const DetailProduct = ({ image, title, description, price, availability }) => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
