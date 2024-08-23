@@ -9,6 +9,8 @@ const ProductDetailPage = () => {
   const { id } = router.query; 
 
   const [product, setProduct] = useState(null);
+  const [selectedQuantity, setSelectedQuantity] = useState(1); // Initialize selectedQuantity
+
 
   const dispatch = useDispatch()
 
@@ -31,10 +33,10 @@ const ProductDetailPage = () => {
   }
 
   const onInsertToCart = () => {
-    
-    dispatch(addToCart(product))
-    
-  };
+        dispatch(addToCart({ ...product, quantity:selectedQuantity }));
+        
+
+};
 
   return (
     <DetailProduct
@@ -44,7 +46,9 @@ const ProductDetailPage = () => {
       price={product.price}
       availability={product.availability}
       onClickCart={onInsertToCart}
-    />
+      selectedQuantity={selectedQuantity} // Pass selectedQuantity
+      setSelectedQuantity={setSelectedQuantity} // Pass setter function
+      />
   );
 };
 

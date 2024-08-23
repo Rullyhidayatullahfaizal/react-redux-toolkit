@@ -1,10 +1,18 @@
 import MetaHead from "@/components/MetaHead";
-import React from "react";
+import React, { useState } from "react";
 
 
-const DetailProduct = ({ image, title, description, price, availability,onClickCart }) => {
+const DetailProduct = ({ image, title, description, price, availability,onClickCart,selectedQuantity, setSelectedQuantity }) => {
 
-  
+  const increaseQuantity = () => {
+    setSelectedQuantity(selectedQuantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (selectedQuantity > 1) {
+      setSelectedQuantity(selectedQuantity - 1);
+    }
+  };
 
   return (
     <>
@@ -50,10 +58,12 @@ const DetailProduct = ({ image, title, description, price, availability,onClickC
           <p className="text-gray-400 font-light text-xs text-center">
             Hammond robotics
           </p>
-          <h1 className="text-gray-800 text-center mt-1">Item name</h1>
-          <p className="text-center text-gray-800 mt-1">€1299</p>
+          <h1 className="text-gray-800 text-center mt-1">{title}</h1>
+          <p className="text-center text-gray-800 mt-1">USD {price}</p>
           <div className="inline-flex items-center mt-2">
-            <button className="bg-white rounded-l border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200">
+            <button
+             onClick={decreaseQuantity}
+             className="bg-white rounded-l border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-4"
@@ -70,9 +80,11 @@ const DetailProduct = ({ image, title, description, price, availability,onClickC
               </svg>
             </button>
             <div className="bg-gray-100 border-t border-b border-gray-100 text-gray-600 hover:bg-gray-100 inline-flex items-center px-4 py-1 select-none">
-              2
+              {selectedQuantity}
             </div>
-            <button className="bg-white rounded-r border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200">
+            <button
+            onClick={increaseQuantity}
+             className="bg-white rounded-r border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-4"

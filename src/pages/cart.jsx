@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // import { CartContext } from "@/contexts/CartContext";
 
 import { useSelector, useDispatch } from "react-redux";
-import { deleteCart } from "@/store/cartSlice";
+import { deleteToCart } from "@/store/cartSlice";
 
 export default function Cart() {
   const [summary, setSummary] = useState(0);
@@ -24,6 +24,10 @@ export default function Cart() {
   
     calculateTotal();
   }, [dataCartDariRedux]);
+
+  const handleDeleteCart = (id) => {
+    dispatch(deleteToCart(id))
+  }
 
 
 
@@ -57,7 +61,7 @@ export default function Cart() {
               </div>
               <button
                 className="bg-red-500 p-2 text-white ml-auto  "
-                onClick={() => dispatch(deleteCart(value.id))}
+                onClick={() => handleDeleteCart(value.id)}
               >
                 Delete
               </button>

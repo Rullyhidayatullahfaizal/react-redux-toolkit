@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 export const HeaderPage = () => {
   const dataFromRedux = useSelector(state => state.cart.value)
   const totalQuantity = dataFromRedux.reduce((total,item) => total + item.quantity,0 )
-  
+  console.log(totalQuantity,"Data dari header")
+  console.log(dataFromRedux,"data dari redux header")
   const dispatch = useDispatch()
 
   return (
