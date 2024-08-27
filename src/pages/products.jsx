@@ -29,7 +29,7 @@ const ProductsPage = () => {
         image={`${process.env.NEXT_PUBLIC_HOST_NAME}/images/logo/nike.svg`}
         url={process.env.NEXT_PUBLIC_HOST_NAME}
       />
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1  sm:grid-cols-3 gap-2">
         {products.length > 0
           ? products.map((value) => (
               <CardPage
