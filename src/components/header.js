@@ -1,13 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const HeaderPage = () => {
-  const dataFromRedux = useSelector(state => state.cart.value)
-  const totalQuantity = dataFromRedux.reduce((total,item) => total + item.quantity,0 )
-  console.log(totalQuantity,"Data dari header")
-  console.log(dataFromRedux,"data dari redux header")
-  const dispatch = useDispatch()
+  const dataFromRedux = useSelector((state) => state.cart.value);
+  const totalQuantity = dataFromRedux.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+  console.log(totalQuantity, "Data dari header");
+  console.log(dataFromRedux, "data dari redux header");
+  const {isLogin,value} = useSelector((state) => state.auth)  
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -16,12 +20,18 @@ export const HeaderPage = () => {
           href="/cart"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-         <div className="bg-purple-500 px-5 py-2 rounded-xl font-semibold text-white">
+          <div className="bg-purple-500 px-5 py-2 rounded-xl font-semibold text-white">
             {totalQuantity}
-         </div>
+          </div>
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Total\keranjang
           </span>
+          {isLogin && (
+            <Image
+            src={value.image} width={50} height={50} alt="avatar" className="rounded-full"
+            />
+          )}
+          
         </Link>
         <button
           data-collapse-toggle="navbar-default"
@@ -83,12 +93,12 @@ export const HeaderPage = () => {
               </a>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/auth/login"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                Contact
-              </a>
+                login
+              </Link>
             </li>
           </ul>
         </div>
