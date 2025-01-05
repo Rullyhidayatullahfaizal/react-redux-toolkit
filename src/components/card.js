@@ -4,7 +4,7 @@ import React from "react";
 
 const CardPage = ({ image, title, description, id,prices }) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm bg-cyan-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link key={id} href={`/product/csr/${id}`}>
         <Image src={image} width={500} height={500} alt={description} />
       </Link>
